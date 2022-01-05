@@ -265,18 +265,19 @@ INSERT INTO alumno_se_matricula_asignatura VALUES (19, 10, 5);
 /*1*/
 SELECT apellido1, apellido2, nombre
 FROM persona
+WHERE tipo = 'alumno'
 ORDER BY apellido1 ASC, apellido2 ASC, nombre ASC;
 
 /*2*/
 SELECT apellido1, apellido2, nombre
 FROM persona
-WHERE telefono IS NULL
+WHERE tipo='alumno' AND telefono IS NULL
 ORDER BY apellido1 ASC, apellido2 ASC, nombre ASC;
 
 /*3*/
 SELECT apellido1, apellido2, nombre
 FROM persona
-WHERE fecha_nacimiento LIKE '%1999%'
+WHERE tipo='alumno' AND fecha_nacimiento LIKE '%1999%'
 ORDER BY apellido1 ASC, apellido2 ASC, nombre ASC;
 
 /*4*/
@@ -286,7 +287,7 @@ WHERE tipo LIKE 'profesor' AND telefono IS NULL AND nif LIKE '%K'
 ORDER BY apellido1 ASC, apellido2 ASC, nombre ASC;
 
 /*5*/
-SELECT nombre
+SELECT *
 FROM asignatura
 WHERE cuatrimestre = '1' AND curso = '3' AND id_grado = 7
 ORDER BY nombre ASC;
@@ -413,12 +414,13 @@ OR profesor.id_departamento IS NULL;
 
 /*1*/
 SELECT COUNT(persona.tipo)
-FROM persona;
+FROM persona
+WHERE tipo='alumno';
 
 /*2*/
 SELECT COUNT(persona.fecha_nacimiento)
 FROM persona
-WHERE persona.fecha_nacimiento LIKE '%1999%';
+WHERE tipo='alumno' AND persona.fecha_nacimiento LIKE '%1999%';
 
 /*3*/
 SELECT departamento.nombre as departamento, COUNT(profesor.id_profesor) as nº_profesores
@@ -494,6 +496,7 @@ ORDER BY COUNT(asignatura.id_profesor) DESC;
 /*10*/
 SELECT * 
 FROM persona
+WHERE tipo='alumno'
 ORDER BY persona.fecha_nacimiento DESC
 LIMIT 1;
 

@@ -86,7 +86,7 @@ ORDER BY fabricante.nombre;
 SELECT producto.codigo, producto.nombre, producto.precio,fabricante.codigo, fabricante.nombre  FROM producto 
 INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo;
 
-SELECT producto.nombre, producto.precio, fabricante.nombre  FROM producto 
+SELECT producto.nombre AS Producto, producto.precio, fabricante.nombre AS Fabricante  FROM producto 
 INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo 
 ORDER BY producto.precio 
 LIMIT 1;
@@ -103,10 +103,10 @@ WHERE fabricante.nombre='Lenovo';
 SELECT producto.nombre FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo
 WHERE fabricante.nombre='Crucial' AND producto.precio>200;
 
-SELECT producto.nombre FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo 
+SELECT * FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo 
 WHERE fabricante.nombre='Asus' OR fabricante.nombre='Hewlett-Packard' OR fabricante.nombre='Seagate';
 
-SELECT producto.nombre FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo 
+SELECT * FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo 
 WHERE fabricante.nombre IN ('Asus','Hewlett-Packard','Seagate');
 
 SELECT producto.nombre, producto.precio FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE RIGHT(fabricante.nombre,1)='e';
@@ -138,7 +138,7 @@ LEFT JOIN producto
 WHERE producto.nombre IS NULL;
 
 /*36*/
-SELECT fabricante.nombre, producto.nombre
+SELECT *
 FROM fabricante
 LEFT JOIN producto
 	ON fabricante.codigo = producto.codigo_fabricante
